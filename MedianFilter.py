@@ -6,6 +6,7 @@ def mediaFilter():
     finalPicLocation = "C:\cst205\Project1Images\picFinal.png"
     finalPic = makePicture(finalPicLocation)
     finalPicPixel = getPixel(finalPic, 0,0)
+    
     pictureList = []
     
     for num in range (1, 10):
