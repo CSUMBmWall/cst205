@@ -1,4 +1,4 @@
-def mediaFilter():   
+def FilterDriver():   
     redPixelList = []
     greenPixelList = []
     bluePixelList = []   
@@ -17,25 +17,28 @@ def mediaFilter():
     for pixelLength in range (0, getHeight(finalPic)):
       for pixelWidth in range(0, getWidth(finalPic)):
         for num in range (0, 9):
-          picture = pictureList[num]        
-          pixel = getPixel(picture, pixelWidth, pixelLength)
-          finalPicPixel = getPixel(finalPic, pixelWidth, pixelLength)
-          redPixelList.append(getRed(pixel))
-          greenPixelList.append(getGreen(pixel))
-          bluePixelList.append(getBlue(pixel))
           
-        redPixelList.sort()
-        setRed(finalPicPixel, redPixelList[listMidValue])
-        redPixelList[:] = []
-      
-        greenPixelList.sort()
-        setGreen(finalPicPixel, greenPixelList[listMidValue])
-        greenPixelList[:] = []
-      
-        bluePixelList.sort()
-        setBlue(finalPicPixel, bluePixelList[listMidValue])
-        bluePixelList[:] = []
         
     writePictureTo(finalPic, "C:\cst205\Project1Images\EditPic2.png")
     repaint(finalPic)
+    
+def medianFilter(num):
+  picture = pictureList[num]        
+  pixel = getPixel(picture, pixelWidth, pixelLength)
+  finalPicPixel = getPixel(finalPic, pixelWidth, pixelLength)
+  redPixelList.append(getRed(pixel))
+  greenPixelList.append(getGreen(pixel))
+  bluePixelList.append(getBlue(pixel))
+          
+  redPixelList.sort()
+  setRed(finalPicPixel, redPixelList[listMidValue])
+  redPixelList[:] = []
+      
+  greenPixelList.sort()
+  setGreen(finalPicPixel, greenPixelList[listMidValue])
+  greenPixelList[:] = []
+      
+  bluePixelList.sort()
+  setBlue(finalPicPixel, bluePixelList[listMidValue])
+  bluePixelList[:] = []
      
