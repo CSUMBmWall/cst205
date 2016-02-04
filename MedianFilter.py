@@ -1,4 +1,4 @@
-def mediaFilter():   
+def medianFilter():   
     redPixelList = []
     greenPixelList = []
     bluePixelList = []   
@@ -37,6 +37,6 @@ def mediaFilter():
         setBlue(finalPicPixel, bluePixelList[listMidValue])
         bluePixelList[:] = []
         
-    writePictureTo(finalPic, "C:\cst205\Project1Images\EditPic2.png")
+    writePictureTo(finalPic, "C:\cst205\Project1Images\EditPic3.png")
     repaint(finalPic)
      
