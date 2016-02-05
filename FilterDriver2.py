@@ -1,26 +1,64 @@
 def filterDriver2():
-  filter = requestString("Filter Type? medain, mean, negate, lighten, grayscale")  
-  dateTime = requestString("What is the date and time? MM-dd-HHmm")
-  filter.lower()
-  if filter == "median" or filter == "mean":
-    numPics = requestNumber("How Many Pictures?")
-    if filter == "median":
-      medianFilter(numPics, dateTime)
-    else:
-      meanFilter(numPics, dateTime)
+  count = 1
+  while(true):
+    if count > 1:
+      proceed = requestString("Would you like to edit another photo? Y/N")
+      if proceed == "N" or proceed == "n":
+        sys.exit
+    count += 1
+    filter = requestString("Filter Type? medain, mean, negate, \n" +
+    "lighten, grayscale, removeRed, removeGreen, removeBlue")  
+    dateTime = requestString("What is the date and time? MM-dd-HHmm")
+    filter.lower()
+    if filter == "median" or filter == "mean":
+      numPics = requestNumber("How Many Pictures?")
+      if filter == "median":
+        medianFilter(numPics, dateTime)
+      else:
+        meanFilter(numPics, dateTime)
+        
+    if filter != "median" and filter != "mean":
+      file = pickAFile()
+      picture = makePicture(file)
+    
+    if filter == "negate":
+      negate(picture, dateTime)
       
-  if filter == "negate" or filter == "lighten" or filter == "grayscale":
-    file = pickAFile()
-    picture = makePicture(file)
+    if filter == "lighten":
+      lightenPixel(picture, dateTime)
+      
+    if filter == "grayscale":
+      grayScale(picture, dateTime)
+      
+    if filter == "removeRed":
+      removeRed(picture, dateTime)
+    
+    if filter == "removeGreen":
+      removeGreen(picture, dateTime)
+      
+    if filter == "removeBlue":
+      removeBlue(picture, dateTime)
+      
+def removeRed(picture, dateTime):
+  for pixel in getPixels(picture):
+    setRed(pixel, 0)
+    
+  writePictureTo(picture, "C:\cst205\Project1Images\Edited\RemoveRedEditPic" + dateTime + ".png")
+  repaint(picture)
   
-  if filter == "negate":
-    negate(picture, dateTime)
+def removeGreen(picture, dateTime):
+  for pixel in getPixels(picture):
+    setGreen(pixel, 0)
     
-  if filter == "lighten":
-    lightenPixel(picture, dateTime)
+  writePictureTo(picture, "C:\cst205\Project1Images\Edited\RemoveGreenEditPic" + dateTime + ".png")
+  repaint(picture)
+  
+def removeBlue(picture, dateTime):
+  for pixel in getPixels(picture):
+    setBlue(pixel, 0)
     
-  if filter == "grayscale":
-    grayScale(picture, dateTime)
+  writePictureTo(picture, "C:\cst205\Project1Images\Edited\RemoveBlueEditPic" + dateTime + ".png")
+  repaint(picture)
 
   
 def grayScale(picture, dateTime):
