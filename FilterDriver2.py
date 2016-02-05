@@ -1,13 +1,17 @@
 def filterDriver2():
   count = 1
-  while(true):
+  yes = true
+  while(yes):
     if count > 1:
       proceed = requestString("Would you like to edit another photo? Y/N")
       if proceed == "N" or proceed == "n":
-        sys.exit
+        yes = false
+        break
     count += 1
-    filter = requestString("Filter Type? medain, mean, negate, \n" +
-    "lighten, grayscale, removeRed, removeGreen, removeBlue")  
+    filter = requestString("Filter Type:\n" +
+    "medain, mean, negate, \n" +
+    "lighten, grayscale, removeRed, \n" +
+    "removeGreen, removeBlue")  
     dateTime = requestString("What is the date and time? MM-dd-HHmm")
     filter.lower()
     if filter == "median" or filter == "mean":
