@@ -1,3 +1,8 @@
+#Matt Wall, 2/8/2016  CST205 Project 114
+#Median, Mean methods for pictures
+#grayScale, lighten and negate methods were taken from 
+#http://www.cs.uregina.ca/Links/class-info/325/PythonPictures/
+
 def filterDriver2():
   count = 1
   yes = true
