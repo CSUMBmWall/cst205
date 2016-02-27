@@ -1,3 +1,12 @@
+'''
+Author:  Matt Wall
+Date: 2/10/2016
+Title: CST205 Project 1
+Abstract:  Provides user interface to select image processing options:
+            grayscale, lighten, negate, removeBlue, removeGreen, removeRed,
+            median, and mean.  Asks for date, and then to select pic(s)
+'''
+
 def filterDriver2():
   count = 1
   yes = true
@@ -9,7 +18,7 @@ def filterDriver2():
         break
     count += 1
     filter = requestString("Filter Type:\n" +
-    "medain, mean, negate, \n" +
+    "median, mean, negate, \n" +
     "lighten, grayscale, removeRed, \n" +
     "removeGreen, removeBlue")  
     dateTime = requestString("What is the date and time? MM-dd-HHmm")
