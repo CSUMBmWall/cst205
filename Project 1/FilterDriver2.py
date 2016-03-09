@@ -1,7 +1,18 @@
+
+'''
+Author:  Matt Wall
+Date: 2/10/2016
+Title: CST205 Project 1
+Abstract:  Provides user interface to select image processing options:
+            grayscale, lighten, negate, removeBlue, removeGreen, removeRed,
+            median, and mean.  Asks for date, and then to select pic(s)
+
+
 #Matt Wall, 2/8/2016  CST205 Project 114
 #Median, Mean methods for pictures
 #grayScale, lighten and negate methods were taken from 
 #http://www.cs.uregina.ca/Links/class-info/325/PythonPictures/
+'''
 
 def filterDriver2():
   count = 1
