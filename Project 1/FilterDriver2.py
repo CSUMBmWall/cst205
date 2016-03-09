@@ -14,7 +14,7 @@ def filterDriver2():
         break
     count += 1
     filter = requestString("Filter Type:\n" +
-    "medain, mean, negate, \n" +
+    "median, mean, negate, \n" +
     "lighten, grayscale, removeRed, \n" +
     "removeGreen, removeBlue")  
     dateTime = requestString("What is the date and time? MM-dd-HHmm")
