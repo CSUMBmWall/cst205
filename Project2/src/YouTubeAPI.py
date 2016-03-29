@@ -1,26 +1,36 @@
 import os
+import subprocess
+from subprocess import check_output
+from youtube_dl import *
 
 class YouTubeAPI:
 
     def __init__(self, info):
         self.checkInputs(info)
 
+        #get video info from YouTube
+        ydl_opts = {
+            'quiet': True,
+            'skip_download': True,
+        }
+
+        with YoutubeDL(ydl_opts) as ydl:
+            ytInfo = ydl.extract_info('https://www.youtube.com/watch?v=Hn1BapsppXM')
+
+        print('Title of the extracted video/playlist: %s' % ytInfo['title'])
+        downloadFileName = info['directory'] + "/" + str(ytInfo['title']) + ".mp3"
+        print(downloadFileName)
+
+        #run the youtube_dl command to download video
         osCommand = "youtube-dl --extract-audio --audio-format mp3 -o " + info['directory'] + "/%(title)s.%(ext)s " + info['url']
-        print("oscommand - " + osCommand)
+        os.system(osCommand)
 
-        fileName = os.system("youtube-dl --get-filename -o %(title)s https://www.youtube.com/watch?v=xAWtuxhdUDE")
-        print("fileName - " + fileName)
-        #os.system(osCommand)
-        #os.system("youtube-dl --extract-audio --audio-format mp3 -o C:\\Users\Matt\Downloads\Music\%(title)s.%(ext)s(uploader) https://www.youtube.com/watch?v=Hn1BapsppXM")
-
-        downloadFileName = info['directory'] + "/" + str(fileName) + ".mp3"
-        print("downloadFileName - " + downloadFileName)
 
         trackInfo = info['artist'] + " - " + info['album'] + " - " + info['title']
         newFileName =  info['directory'] + "/" + trackInfo + ".mp3"
         print("newFileName - " + newFileName)
 
-        #os.rename(downloadFileName, newFileName)
+        os.rename(downloadFileName, newFileName)
 
     def checkInputs(self, info):
         for entry in info:
